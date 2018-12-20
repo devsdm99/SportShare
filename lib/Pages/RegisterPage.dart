@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../BackgroundGradient.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'LoginPage.dart';
 
 class RegisterPage extends StatefulWidget {
   _RegisterPageState createState() => new _RegisterPageState();
@@ -29,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
                             ///EMAIL INPUT
-                            new TextFormField(       
+                            new TextFormField(
                               validator: (input) {
                                 if (input.isEmpty) {
                                   return 'Please type an email';
@@ -38,8 +40,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               onSaved: (input) => _email = input,
                               decoration: InputDecoration(labelText: 'Email'),
                             ),
+
                             ///PASSWORD INPUT
-                            new TextFormField(   
+                            new TextFormField(
                               validator: (input) {
                                 if (input.length < 6) {
                                   return 'Longer password please';
@@ -50,35 +53,32 @@ class _RegisterPageState extends State<RegisterPage> {
                               onSaved: (input) => _password = input,
                               obscureText: true,
                             ),
+
                             ///PASSWORD REPEAT INPUT
-                            new TextFormField(                           
+                            new TextFormField(
                               onSaved: (input) => _passwordRepeat = input,
-                              validator: (input) {
-                                if (_password != _passwordRepeat) {
-                                  return 'Please match your passwords';
-                                }
-                              },
+                              validator: (input) {},
                               decoration:
-                              InputDecoration(labelText: 'Repeat Password'),
+                                  InputDecoration(labelText: 'Repeat Password'),
                               obscureText: true,
                             ),
+
                             ///NAME INPUT
                             new TextFormField(
                               onSaved: (input) => _name = input,
-                              validator: (input) {
-                              },
+                              validator: (input) {},
                               decoration: InputDecoration(labelText: 'Name'),
                             ),
-                             ///SURNAME
-                            new TextFormField( 
+
+                            ///SURNAME
+                            new TextFormField(
                               onSaved: (input) => _surname = input,
-                              validator: (input) {
-                              },
+                              validator: (input) {},
                               decoration: InputDecoration(labelText: 'Surname'),
                             ),
                             //REGISTER BUTTON
                             new InkWell(
-
+                              onTap: signUp,
                               child: new Container(
                                 margin: new EdgeInsets.only(
                                     top: 30.0, left: 20.0, right: 20),
@@ -126,8 +126,18 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
-}
 
-/*FirebaseUser user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
-      user.sendEmailVerification();
-      Navigator.of(context).pop();*/
+  void signUp() async {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      try {
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: _email, password: _password);
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
+      } catch (e) {
+        print(e.message);
+      }
+    }
+  }
+}
