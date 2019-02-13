@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
         Duration(seconds: 4),
-        () => Navigator.push(context,
+        () => Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => LoginPage())));
   }
 
@@ -37,26 +37,28 @@ class _SplashScreenState extends State<SplashScreen> {
         children: <Widget>[
           new BackgroundGradient(), //PONEMOS EL FONDO PRIMERO
           new Center(//CENTRAMOS
-            child: new Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 100.0),
-                  child: new Text(
-                    "WELCOME TO SPORTSHARE",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                        color: Colors.white),
+            child: new SingleChildScrollView(
+              child: new Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 100.0),
+                    child: new Text(
+                      "WELCOME TO SPORTSHARE",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                          color: Colors.white),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 160.0),
-                  child: logo,
-                ),
-                Padding(
+                  Padding(
                     padding: const EdgeInsets.only(top: 160.0),
-                    child: indicador),
-              ],
+                    child: logo,
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(top: 160.0),
+                      child: indicador),
+                ],
+              ),
             ),
           ),
         ],
