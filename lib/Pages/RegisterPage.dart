@@ -136,6 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
             user.sendEmailVerification();
        Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LoginPage()));
+            Navigator.of(context).pop();
       } catch (e) {
         print(e.message);
       }
