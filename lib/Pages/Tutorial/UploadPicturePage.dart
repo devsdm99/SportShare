@@ -19,7 +19,6 @@ class _UploadPicturePageState extends State<UploadPicturePage> {
         child: new Container(
           child: new Column(
             children: <Widget>[
-              
               Text("Hola Mundo")
             ],
           ),

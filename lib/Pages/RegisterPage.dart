@@ -131,12 +131,10 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try {
-        FirebaseUser user = await FirebaseAuth.instance
+        await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: _email, password: _password);
-            user.sendEmailVerification();
-       Navigator.pushReplacement(
+        Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LoginPage()));
-            Navigator.of(context).pop();
       } catch (e) {
         print(e.message);
       }

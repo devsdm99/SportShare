@@ -170,7 +170,7 @@ class _LoginPage extends State<LoginPage> {
       try {
         FirebaseUser user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.pushReplacement(context,
+        Navigator.push(context,
             MaterialPageRoute(builder: (context) => HomePage(user: user)));
       } catch (e) {
         print(e.message);
@@ -180,7 +180,7 @@ class _LoginPage extends State<LoginPage> {
 
   void signUp() async {
     try {
-      Navigator.push(
+      Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => RegisterPage()));
     } catch (e) {
       print(e.message);
