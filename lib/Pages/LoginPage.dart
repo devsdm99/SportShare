@@ -180,7 +180,7 @@ class _LoginPage extends State<LoginPage> {
 
   void signUp() async {
     try {
-      Navigator.pushReplacement(
+      Navigator.push(
           context, MaterialPageRoute(builder: (context) => RegisterPage()));
     } catch (e) {
       print(e.message);
