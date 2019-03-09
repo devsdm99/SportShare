@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:sportshareapp/Pages/RootPage.dart';
+import 'package:sportshareapp/auth.dart';
 import '../BackgroundGradient.dart';
 import 'LoginPage.dart';
 
@@ -16,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         Duration(seconds: 4),
         () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => LoginPage())));
+            MaterialPageRoute(builder: (context) => RootPage(auth: new Auth(),))));
   }
 
   @override

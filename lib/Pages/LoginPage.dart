@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import '../BackgroundGradient.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sportshareapp/auth.dart';
 import 'HomePage.dart';
 import 'RegisterPage.dart';
 
 class LoginPage extends StatefulWidget {
+  LoginPage({this.auth, this.onSignedIn});//parametros de esta clase
+
+  final BaseAuth auth;
+  final VoidCallback onSignedIn;
   _LoginPage createState() => _LoginPage();
 }
 
@@ -50,8 +55,9 @@ class _LoginPage extends State<LoginPage> {
                               onSaved: (input) => _email = input,
                               decoration: InputDecoration(
                                   labelText: 'EMAIL',
-                                  labelStyle:
-                                      TextStyle(fontWeight: FontWeight.bold),
+                                  labelStyle: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
                                   focusedBorder: UnderlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.white))),
@@ -59,14 +65,16 @@ class _LoginPage extends State<LoginPage> {
                             new TextFormField(
                               ///PASSWORD INPUT
                               validator: (input) {
-                                if (input.length < 6) {
-                                  return 'Longer password please';
+                                if (input.isEmpty) {
+                                  return 'Type a password please';
                                 }
                               },
                               decoration: InputDecoration(
                                   labelText: 'PASSWORD',
                                   labelStyle:
-                                      TextStyle(fontWeight: FontWeight.bold),
+                                      TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide:
                                           BorderSide(color: Colors.white),
@@ -81,7 +89,7 @@ class _LoginPage extends State<LoginPage> {
                               onTap: signIn,
                               child: new Container(
                                 margin: new EdgeInsets.only(
-                                    top: 30.0, left: 20.0, right: 20),
+                                top: 30.0, left: 20.0, right: 20),
                                 height: 50.0,
                                 width: 230.0,
                                 decoration: BoxDecoration(
@@ -108,7 +116,7 @@ class _LoginPage extends State<LoginPage> {
                                     style: new TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 12.0),
+                                        fontSize: 16.0),
                                   ),
                                 ),
                               ),
@@ -118,9 +126,9 @@ class _LoginPage extends State<LoginPage> {
                               onTap: signUp,
                               child: new Container(
                                 margin: new EdgeInsets.only(
-                                    top: 30.0, left: 20.0, right: 20),
-                                height: 30.0,
-                                width: 140.0,
+                                top: 30.0, left: 20.0, right: 20),
+                                height: 40.0,
+                                width: 200.0,
                                 decoration: BoxDecoration(
                                   boxShadow: [
                                     new BoxShadow(
@@ -141,11 +149,11 @@ class _LoginPage extends State<LoginPage> {
                                 ),
                                 child: new Center(
                                   child: new Text(
-                                    "Registrate aqui!",
+                                    "Do not have account?",
                                     style: new TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 12.0),
+                                        fontSize: 16.0),
                                   ),
                                 ),
                               ),
@@ -167,13 +175,9 @@ class _LoginPage extends State<LoginPage> {
   void signIn() async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      try {
-        FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => HomePage(user: user)));
-      } catch (e) {
-        print(e.message);
-      }
+      String userId = await widget.auth.signInWithEmailAndPassword(_email, _password);
+     //LOGIN    
+           //Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage(user: user)));
     }
   }
 

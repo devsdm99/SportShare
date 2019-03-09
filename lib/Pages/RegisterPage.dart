@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import '../BackgroundGradient.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'LoginPage.dart';
+import 'package:sportshareapp/auth.dart';
 
 class RegisterPage extends StatefulWidget {
+  RegisterPage({this.auth});
+  final BaseAuth auth;
   _RegisterPageState createState() => new _RegisterPageState();
 }
 
@@ -131,8 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try {
-        await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: _email, password: _password);
+       String userId = await widget.auth.createUserWithEmailAndPassword(_email, _password);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LoginPage()));
       } catch (e) {

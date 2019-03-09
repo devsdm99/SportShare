@@ -12,13 +12,8 @@ class HomePage extends StatelessWidget{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home ${user.email}'),
-      ),
-      body: StreamBuilder<DocumentSnapshot>(
-        stream: Firestore.instance.collection('users').document(user.uid).snapshots(),
-        
-      ),
-    );
+        title: Text('Home ${user.email}')
+        ),
+      );
   }
-
 }
