@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sportshareapp/BackgroundGradient.dart';
 
 class UploadPicturePage extends StatefulWidget
 {
@@ -9,7 +7,6 @@ class UploadPicturePage extends StatefulWidget
 }
 
 class _UploadPicturePageState extends State<UploadPicturePage> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {

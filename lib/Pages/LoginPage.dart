@@ -57,7 +57,7 @@ class _LoginPage extends State<LoginPage> {
                                   labelText: 'EMAIL',
                                   labelStyle: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black),
+                                    color: Colors.white),
                                   focusedBorder: UnderlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.white))),
@@ -74,7 +74,7 @@ class _LoginPage extends State<LoginPage> {
                                   labelStyle:
                                       TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.black),
+                                        color: Colors.white),
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide:
                                           BorderSide(color: Colors.white),
@@ -89,9 +89,9 @@ class _LoginPage extends State<LoginPage> {
                               onTap: signIn,
                               child: new Container(
                                 margin: new EdgeInsets.only(
-                                top: 30.0, left: 20.0, right: 20),
-                                height: 50.0,
-                                width: 230.0,
+                                top: 30.0, left: 20.0, right: 20, bottom: 20),
+                                height: 40.0,
+                                width: 200.0,
                                 decoration: BoxDecoration(
                                   boxShadow: [
                                     new BoxShadow(
@@ -121,12 +121,37 @@ class _LoginPage extends State<LoginPage> {
                                 ),
                               ),
                             ),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Divider(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                  ),
+                                  child: Text(
+                                    'o',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Divider(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                             new InkWell(
                               //REGISTER BUTTON
                               onTap: signUp,
                               child: new Container(
                                 margin: new EdgeInsets.only(
-                                top: 30.0, left: 20.0, right: 20),
+                                top: 20.0, left: 20.0, right: 20),
                                 height: 40.0,
                                 width: 200.0,
                                 decoration: BoxDecoration(
@@ -148,8 +173,7 @@ class _LoginPage extends State<LoginPage> {
                                       tileMode: TileMode.clamp),
                                 ),
                                 child: new Center(
-                                  child: new Text(
-                                    "Do not have account?",
+                                  child: new Text( "Do not have account?",
                                     style: new TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -176,15 +200,16 @@ class _LoginPage extends State<LoginPage> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       String userId = await widget.auth.signInWithEmailAndPassword(_email, _password);
+      widget.onSignedIn();
      //LOGIN    
-           //Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage(user: user)));
+      //Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()));
     }
+
   }
 
   void signUp() async {
     try {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => RegisterPage()));
+      Navigator.push( context, MaterialPageRoute(builder: (context) => RegisterPage(auth: widget.auth,)));
     } catch (e) {
       print(e.message);
     }

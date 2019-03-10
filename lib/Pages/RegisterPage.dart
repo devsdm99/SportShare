@@ -134,9 +134,8 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try {
-       String userId = await widget.auth.createUserWithEmailAndPassword(_email, _password);
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+       await widget.auth.createUserWithEmailAndPassword(_email, _password);
+       //Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => LoginPage()));Navigator.of(context).pop();
       } catch (e) {
         print(e.message);
       }
