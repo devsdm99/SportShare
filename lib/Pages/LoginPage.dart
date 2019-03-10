@@ -69,7 +69,8 @@ class _LoginPage extends State<LoginPage> {
                                   return 'Type a password please';
                                 }
                               },
-                              decoration: InputDecoration(
+                              decoration:
+                               InputDecoration(
                                   labelText: 'PASSWORD',
                                   labelStyle:
                                       TextStyle(
@@ -77,8 +78,7 @@ class _LoginPage extends State<LoginPage> {
                                         color: Colors.white),
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide:
-                                          BorderSide(color: Colors.white),
-                                        
+                                          BorderSide(color: Colors.white),   
                                       ),
                               ),
                               onSaved: (input) => _password = input,
@@ -204,6 +204,7 @@ class _LoginPage extends State<LoginPage> {
      //LOGIN    
       //Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()));
     }
+          widget.onSignedIn();
 
   }
 

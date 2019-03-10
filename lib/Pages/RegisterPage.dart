@@ -41,7 +41,17 @@ class _RegisterPageState extends State<RegisterPage> {
                                 }
                               },
                               onSaved: (input) => _email = input,
-                              decoration: InputDecoration(labelText: 'Email'),
+                              decoration: InputDecoration(
+                                  labelText: 'Email',
+                                  labelStyle:
+                                      TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide:
+                                          BorderSide(color: Colors.white),   
+                                      ),
+                              ),
                             ),
 
                             ///PASSWORD INPUT
@@ -52,7 +62,17 @@ class _RegisterPageState extends State<RegisterPage> {
                                 }
                               },
                               decoration:
-                                  InputDecoration(labelText: 'Password'),
+                                  InputDecoration(
+                                  labelText: 'Password',
+                                  labelStyle:
+                                      TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide:
+                                          BorderSide(color: Colors.white),   
+                                      ),
+                              ),
                               onSaved: (input) => _password = input,
                               obscureText: true,
                             ),
@@ -62,7 +82,17 @@ class _RegisterPageState extends State<RegisterPage> {
                               onSaved: (input) => _passwordRepeat = input,
                               validator: (input) {},
                               decoration:
-                                  InputDecoration(labelText: 'Repeat Password'),
+                                  InputDecoration(
+                                  labelText: 'Repeat password',
+                                  labelStyle:
+                                      TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide:
+                                          BorderSide(color: Colors.white),   
+                                      ),
+                              ),
                               obscureText: true,
                             ),
 
@@ -70,14 +100,35 @@ class _RegisterPageState extends State<RegisterPage> {
                             new TextFormField(
                               onSaved: (input) => _name = input,
                               validator: (input) {},
-                              decoration: InputDecoration(labelText: 'Name'),
+                              decoration: InputDecoration(
+                                  labelText: 'Name',
+                                  labelStyle:
+                                      TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide:
+                                          BorderSide(color: Colors.white),   
+                                      ),
+                              ),
                             ),
 
                             ///SURNAME
                             new TextFormField(
                               onSaved: (input) => _surname = input,
                               validator: (input) {},
-                              decoration: InputDecoration(labelText: 'Surname'),
+                              decoration:
+                              InputDecoration(
+                                  labelText: 'Surname',
+                                  labelStyle:
+                                      TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide:
+                                          BorderSide(color: Colors.white),   
+                                      ),
+                              ),
                             ),
                             //REGISTER BUTTON
                             new InkWell(

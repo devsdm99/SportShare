@@ -29,7 +29,7 @@ class _RootPageState extends State<RootPage>{
   void _signedIn(){
     setState(() {
           authStatus = AuthStatus.signedIn;
-        });
+    });
   }
   @override
   Widget build(BuildContext context) {
