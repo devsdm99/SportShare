@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sportshareapp/Pages/ProfilePage.dart';
 import '../BackgroundGradient.dart';
 import 'package:sportshareapp/auth.dart';
+import 'package:flip_box_bar/flip_box_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
@@ -38,19 +39,14 @@ class _HomePageState extends State<HomePage>{
     // TODO: implement build
     return MaterialApp(
     home: Scaffold( 
-      bottomNavigationBar: FancyBottomNavigation(
-        circleColor: Colors.white,
-        inactiveIconColor: Colors.white,
-        activeIconColor: Colors.red,
-        tabs: [
-            TabData(iconData: Icons.home, title: "Home",),
-            TabData(iconData: Icons.search, title: "Search"),
-            TabData(iconData: Icons.location_on, title: "Close"),
-            TabData(iconData: Icons.person, title: "Profile")
-        ],
-        barBackgroundColor: Color.fromRGBO(255, 105, 45, 10),
-        onTabChangedListener: (position) {
-          _setSelected(position);
+      bottomNavigationBar: FlipBoxBar(
+        items: [
+            FlipBarItem(icon: Icon(Icons.home), text: Text("Home"), frontColor: Colors.red, backColor: Colors.redAccent),
+            FlipBarItem(icon: Icon(Icons.search), text: Text("Search"), frontColor: Colors.orange, backColor: Colors.orangeAccent),
+            FlipBarItem(icon: Icon(Icons.map), text: Text("Events"), frontColor: Colors.red, backColor: Colors.redAccent),
+            FlipBarItem(icon: Icon(Icons.person), text: Text("Profile"), frontColor: Colors.orange, backColor: Colors.orangeAccent),        ],
+        onIndexChanged: (newIndex) {
+         _getPage(newIndex);
         },
       ),
       body: new Container(
