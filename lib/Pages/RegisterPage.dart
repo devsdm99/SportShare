@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../BackgroundGradient.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -185,11 +187,20 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try {
-       await widget.auth.createUserWithEmailAndPassword(_email, _password);
-       //Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => LoginPage()));Navigator.of(context).pop();
+       String uid = await widget.auth.createUserWithEmailAndPassword(_email, _password);
+       AddDataToFireBase(uid,_name, _surname);
+       Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => LoginPage()));
+       Navigator.of(context).pop();
       } catch (e) {
         print(e.message);
       }
     }
   }
+}
+
+void AddDataToFireBase(String uid,String name, String surname) {
+  Firestore.instance.collection("users")
+  .document(uid)
+  .setData({"name":name, "surname":surname});
+
 }

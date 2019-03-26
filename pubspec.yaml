@@ -23,6 +23,7 @@ dependencies:
   cloud_firestore: ^0.9.5+2
   fancy_bottom_navigation: ^0.3.2
   flip_box_bar: ^0.2.0
+  firebase_database: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +47,15 @@ flutter:
   assets:
     - assets/logoapp.png
     - assets/logoappCN.png
+    - assets/beach1.jpg
+    - assets/beach2.jpg
+    - assets/beach3.jpg
+    - assets/chris.jpg
+    - assets/speechbubble.png
+    - assets/navarrow.png
+    - assets/chatbubble.png
+    - assets/fav.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

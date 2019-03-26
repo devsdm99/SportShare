@@ -52,11 +52,11 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 160.0),
+                  padding: const EdgeInsets.only(top: 100.0),
                   child: logo,
                 ),
                 Padding(
-                    padding: const EdgeInsets.only(top: 160.0),
+                    padding: const EdgeInsets.only(top: 100.0),
                     child: indicador),
               ],
             ),

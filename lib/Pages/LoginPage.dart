@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../BackgroundGradient.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sportshareapp/auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'HomePage.dart';
 import 'RegisterPage.dart';
 
@@ -10,12 +10,14 @@ class LoginPage extends StatefulWidget {
 
   final BaseAuth auth;
   final VoidCallback onSignedIn;
+  
   _LoginPage createState() => _LoginPage();
 }
 
 class _LoginPage extends State<LoginPage> {
 //VARIABLEEES
   String _email, _password;
+  
   final logo = Image.asset(
     "assets/logoappCN.png",
     width: 220.0,
@@ -202,9 +204,8 @@ class _LoginPage extends State<LoginPage> {
       String userId = await widget.auth.signInWithEmailAndPassword(_email, _password);
       widget.onSignedIn();
      //LOGIN    
-      //Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()));
+      Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage(uid: userId)));
     }
-          widget.onSignedIn();
 
   }
 

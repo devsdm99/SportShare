@@ -9,9 +9,10 @@ import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 
 class HomePage extends StatefulWidget{
   @override
-  HomePage({this.auth, this.onSignedOut});
+  HomePage({this.auth, this.onSignedOut, this.uid});
   final BaseAuth auth;
   final VoidCallback onSignedOut;
+  final String uid;
 
   State<StatefulWidget> createState ()=> _HomePageState();
 }
@@ -41,12 +42,15 @@ class _HomePageState extends State<HomePage>{
     home: Scaffold( 
       bottomNavigationBar: FlipBoxBar(
         items: [
-            FlipBarItem(icon: Icon(Icons.home), text: Text("Home"), frontColor: Colors.red, backColor: Colors.redAccent),
-            FlipBarItem(icon: Icon(Icons.search), text: Text("Search"), frontColor: Colors.orange, backColor: Colors.orangeAccent),
-            FlipBarItem(icon: Icon(Icons.map), text: Text("Events"), frontColor: Colors.red, backColor: Colors.redAccent),
-            FlipBarItem(icon: Icon(Icons.person), text: Text("Profile"), frontColor: Colors.orange, backColor: Colors.orangeAccent),        ],
+            FlipBarItem(icon: Icon(Icons.home), text: Text("Home"), frontColor: Colors.white, backColor: Colors.orangeAccent),
+            FlipBarItem(icon: Icon(Icons.search), text: Text("Search"), frontColor: Colors.white, backColor: Colors.orangeAccent),
+            FlipBarItem(icon: Icon(Icons.add), text: Text("Add"), frontColor: Colors.white, backColor: Colors.orangeAccent),  
+            FlipBarItem(icon: Icon(Icons.map), text: Text("Events"), frontColor: Colors.white, backColor: Colors.orangeAccent),
+            FlipBarItem(icon: Icon(Icons.person), text: Text("Profile"), frontColor: Colors.white, backColor: Colors.orangeAccent),        ],
         onIndexChanged: (newIndex) {
-         _getPage(newIndex);
+          setState(() {
+            currentPage = newIndex;
+          });
         },
       ),
       body: new Container(
@@ -58,20 +62,10 @@ class _HomePageState extends State<HomePage>{
   );  
 }
   _getPage(int page) {
-  switch (page) {
-    case 0:
-    break;
-    case 1:
-    break;
-    case 2:   
-    break;
-    case 3:
-      return new Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ProfilePage()
-        ],
-      );
+    if(page == 4)
+    {
+      return ProfilePage();
+
     }
   }
 }
