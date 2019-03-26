@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-
 import 'package:sportshareapp/BackgroundGradient.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 class ProfilePage extends StatefulWidget
 {
   @override
+  ProfilePage({this.uid});
+  final String uid;
   State<StatefulWidget> createState() => _ProfilePageState();
-  
 
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final ref = FirebaseStorage.instance.ref().child('testimage');
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,16 +38,28 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Hero(
-                tag: 'assets/chris.jpg',
-                child: Container(
+                tag: 'assets/guti.jpg',
+                child: new Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    GestureDetector(
+                                      child: Container(
                   height: 125.0,
                   width: 125.0,
-                  decoration: BoxDecoration(
+                  decoration: BoxDecoration(                    
                       borderRadius: BorderRadius.circular(62.5),
                       image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('assets/chris.jpg'))),
+                            fit: BoxFit.cover,
+                            image: AssetImage('assets/guti.jpg'),       
+                          ),
+                  ),
+                  
                 ),
+                    )
+                  ],
+                ),
+                
+                
               ),
               SizedBox(height: 25.0),
               Text(

@@ -24,6 +24,7 @@ dependencies:
   fancy_bottom_navigation: ^0.3.2
   flip_box_bar: ^0.2.0
   firebase_database: ^2.0.2
+  firebase_storage: ^2.1.0+1
 
 dev_dependencies:
   flutter_test:
@@ -50,7 +51,7 @@ flutter:
     - assets/beach1.jpg
     - assets/beach2.jpg
     - assets/beach3.jpg
-    - assets/chris.jpg
+    - assets/guti.jpg
     - assets/speechbubble.png
     - assets/navarrow.png
     - assets/chatbubble.png

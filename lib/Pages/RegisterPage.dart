@@ -202,5 +202,4 @@ void AddDataToFireBase(String uid,String name, String surname) {
   Firestore.instance.collection("users")
   .document(uid)
   .setData({"name":name, "surname":surname});
-
 }

@@ -21,11 +21,6 @@ class _HomePageState extends State<HomePage>{
   int currentPage = 0;
   GlobalKey bottomNavigationKey = GlobalKey();
 
-  _setSelected(int position){
-    setState((){
-      currentPage = position;
-    });
-  }
   void _signOut()async{
     try {
       await widget.auth.signOut();
@@ -64,8 +59,7 @@ class _HomePageState extends State<HomePage>{
   _getPage(int page) {
     if(page == 4)
     {
-      return ProfilePage();
-
+      return ProfilePage(uid: widget.uid);
     }
   }
 }
