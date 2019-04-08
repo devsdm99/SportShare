@@ -182,13 +182,34 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void signUp() async {
+
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try {
        String uid = await widget.auth.createUserWithEmailAndPassword(_email, _password);
        AddDataToFireBase(uid,_name, _surname);
-       Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => LoginPage()));
-       Navigator.of(context).pop();
+           showDialog(
+         context: context,
+         builder: (BuildContext context){
+           return AlertDialog(
+             title: new Text("Register completed!"),
+             content: new Text("Your SportShare account has been created!"),
+             actions: <Widget>[
+               new FlatButton(
+                 child: new Text("Close",
+                 style: TextStyle(
+                   color: Colors.black
+                 ),),
+                 onPressed: (){
+                   Navigator.of(context).pop();
+                   Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => LoginPage()));
+                 },
+               )
+             ],
+           );
+         }
+       );
+       
       } catch (e) {
         print(e.message);
       }

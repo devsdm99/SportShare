@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportshareapp/Pages/NewEventPage.dart';
 import 'package:sportshareapp/Pages/ProfilePage.dart';
 import '../BackgroundGradient.dart';
 import 'package:sportshareapp/auth.dart';
@@ -57,9 +58,21 @@ class _HomePageState extends State<HomePage>{
   );  
 }
   _getPage(int page) {
-    if(page == 4)
+
+    switch(page)
     {
-      return ProfilePage(uid: widget.uid);
+      case 1:
+      break;
+      case 2:
+        return NewEventPage(uid: widget.uid);
+      break;
+      case 3:
+      break;
+      case 4:
+        return ProfilePage(uid: widget.uid);
+      break;
+
+
     }
   }
 }
