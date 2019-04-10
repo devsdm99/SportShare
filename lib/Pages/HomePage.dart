@@ -6,8 +6,6 @@ import 'package:sportshareapp/auth.dart';
 import 'package:flip_box_bar/flip_box_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-
 class HomePage extends StatefulWidget{
   @override
   HomePage({this.auth, this.onSignedOut, this.uid});
