@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportshareapp/BackgroundGradient.dart';
+import 'package:sportshareapp/constants/palette.dart';
 
 class NewEventPage extends StatefulWidget
 {
@@ -58,55 +59,66 @@ class _NewEventState extends State<NewEventPage> {
     });
   }
     return new Scaffold(
+      appBar: AppBar(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Container(
+              child: new Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Column(
+                  children: <Widget>[
+                Text('Create a New Event  ',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Architects'
+                  ),
+                ),
+              ],
+            ),
+            new Column(
+              children: <Widget>[
+                Icon(
+                  Icons.add
+                )
+              ],
+            )
+                ],
+              ),
+            )   
+          ],
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.red,
+        actions: <Widget>[
+        ],
+      ),
       body: new Form(
         key: _formKey,
         child: new Stack(
           children: <Widget>[
             BackgroundGradient(),
+            new Card(
+              child: new Container(
+                decoration: BoxDecoration(
+                gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Palette.redLight,
+                  Color.fromRGBO(246, 158, 34, 10)
+                ],
+              ),
+              ),
+              
+              ),
+            ),
             new ListView(
               children: <Widget>[
-                new Padding(
-                  padding: EdgeInsets.only(top: 20.0),
-                  child: new Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      new Container(
-                          margin: new EdgeInsets.only(
-                          top: 30.0, left: 20.0, right: 20, bottom: 20),
-                          height: 100.0,
-                          width: 300.0,
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              new BoxShadow(
-                                  color: Colors.black,
-                                  offset: new Offset(10.0, 10.0),
-                                  blurRadius: 30.0),
-                            ],
-                            borderRadius: new BorderRadius.circular(30.0),
-                            gradient: new LinearGradient(
-                                colors: [
-                                  
-                                  const Color.fromRGBO(244, 100, 66, 1.0),
-                                  const Color.fromRGBO(244, 77, 65, 10)
-                                ],
-                                begin: FractionalOffset.topCenter,
-                                end: FractionalOffset.bottomCenter,
-                                stops: [0.0, 1.0],
-                                tileMode: TileMode.clamp),
-                          ),
-                          child: new Center(
-                            child: new Text('New event screen',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontFamily: 'Architects'
-                            ),
-                            ),
-                          ),
-                        ),
-                    ],
-                  )
-                ),
                 Padding(
                   padding: EdgeInsets.only(top: 60.0),
                   child: new Column(
@@ -171,26 +183,45 @@ class _NewEventState extends State<NewEventPage> {
                   ),
                 ),
                 new Padding(
-                  padding: EdgeInsets.only(top: 30.0),
+                  padding: EdgeInsets.only(top: 30.0, left: 30),
                   child: new Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      new Text('Players',
-                      style: TextStyle(
-                        fontSize: 26,
-                        color: Colors.white,
-                        fontFamily: 'Architects'
-
-                      ),)
+                      new Row(
+                        children: <Widget>[
+                          new Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.person,
+                                color: Colors.red[400],
+                              ),
+                            ],
+                          ),
+                          new Column(
+                            children: <Widget>[
+                              new Text('  Number of players:',
+                              style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.white,
+                              fontFamily: 'Architects'
+                              ),)
+                            ],
+                          )
+                        ],
+                      )
                     ],
                   ),
-
                 ),
                 new Padding(
                   padding: EdgeInsets.only(top: 30.0),
-                  child: new Container(
-                    child: new Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
+                  child: new Card(
+                    margin: EdgeInsets.all(10),
+                    color: Colors.transparent,
+                    shape: StadiumBorder(side: BorderSide(width: 2.0)),
+                    child:new Container(
+                      child: new Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
                         new Column(
                           children: <Widget>[
                             new Container(
@@ -266,6 +297,7 @@ class _NewEventState extends State<NewEventPage> {
                       ],
                     ),
                   ),
+                  )
                 ),
                 //Date
                 new Padding(
