@@ -24,7 +24,8 @@ dependencies:
   flip_box_bar: ^0.2.0
   firebase_database: ^2.0.2
   firebase_storage: ^2.1.0+1
-  google_maps_flutter: ^0.4.0
+  google_maps_flutter: ^0.5.7
+  font_awesome_flutter: ^8.4.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class UploadPicturePage extends StatefulWidget
 {
   _UploadPicturePageState createState() => new _UploadPicturePageState();
-
 }
 
 class _UploadPicturePageState extends State<UploadPicturePage> {
@@ -20,9 +19,7 @@ class _UploadPicturePageState extends State<UploadPicturePage> {
             ],
           ),
         ),
-
       ),
-
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sportshareapp/BackgroundGradient.dart';
 import 'package:sportshareapp/constants/palette.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NewEventPage extends StatefulWidget
 {
@@ -17,20 +18,26 @@ class _NewEventState extends State<NewEventPage> {
   String _eventName, _selectedSport, _creator;
   int _playersValue = 1;
   String _players;
-  final int _maxPlayers = 10;
 
   final _formKey = GlobalKey<FormState>();
   DateTime selectedDate = DateTime.now();
   String _selectedDateValue;
-  Text _selectedSportt = Text('Please choose a sport');
 
   Future<Null> _selectDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+
+    final DateTime picked = await showDatePicker(         
         context: context,
-        initialDate: selectedDate,
-        
+        initialDate: selectedDate, 
         firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
+        builder: (BuildContext context, Widget child)
+        {
+          return Theme(
+            data: ThemeData.dark(),
+            child: child,
+          );
+        },
+        lastDate: DateTime(2101),
+      );
     if (picked != null && picked != selectedDate)
       setState(() {
         selectedDate = picked;
@@ -43,7 +50,7 @@ class _NewEventState extends State<NewEventPage> {
 
   incrementarPersonas(){
     setState(() {
-      if(_playersValue < _maxPlayers){
+      if(_playersValue >=1 ){
         _playersValue++;
       }
     });
@@ -102,80 +109,108 @@ class _NewEventState extends State<NewEventPage> {
         child: new Stack(
           children: <Widget>[
             BackgroundGradient(),
-            new Card(
-              child: new Container(
-                decoration: BoxDecoration(
-                gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Palette.redLight,
-                  Color.fromRGBO(246, 158, 34, 10)
-                ],
-              ),
-              ),
-              
-              ),
-            ),
-            new ListView(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 60.0),
-                  child: new Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      new Container(
-                        width: 300,
-                        child: new TextFormField(
-                          onSaved: (input)=> _eventName = input,
-                          validator: (input){
-                            if(input.isEmpty)
-                            {
-                              return 'Please insert a name for the event';
-                            }
-                          },
-                          style: new TextStyle(color: Colors.white),
-                          decoration: InputDecoration(
-                            labelText: 'Event Name',
-                            labelStyle: new TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Architects'
+            new Padding(
+              padding: EdgeInsets.all(10),
+              child:new Card(
+                child: new Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Palette.redLight,
+                      Palette.redLight
+                    ],
+                  ),
+                ),
+                child: new ListView(
+                  children: <Widget>[
+                    Padding(
+                    padding: EdgeInsets.only(top: 60.0),
+                    child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(left: 20, right: 10),
+                              child: new Column(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
+                                  )
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 2),
+                              child:new Container(
+                                 width: 300,
+                                 child: new TextFormField(
+                                   onSaved: (input)=> _eventName = input,
+                                   validator: (input){
+                                     if(input.isEmpty)
+                                     {
+                                        return 'Please insert a name for the event';
+                                     }
+                                    },
+                                    style: new TextStyle(color: Colors.white),
+                                    decoration: InputDecoration(
+                                    labelText: 'Event Name',
+                                    labelStyle: new TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'Architects'
+                                      )
+                                  ),
+                                ),
+                              ), 
                             )
-                          ),
+                          ],
                         ),
-                      ),
                       new Padding(
                         padding:const EdgeInsets.only(top: 30.0),
                         child: new Container(
-                        width: 300,
-                        child: new Theme(
+                          child: new Theme(
                           data: Theme.of(context).copyWith(
                             canvasColor: Colors.blueGrey
                           ),
-                          child: DropdownButton(
-                          style: TextStyle(color: Colors.white, decorationColor: Colors.white),
-                          hint: Text('Please choose a sport.',
-                          style: new TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Architects'),
-                          ),
-                          value: _selectedSport,
-                          onChanged: (newValue){
-                            setState(() {
-                              _selectedSport = newValue; 
-                            });
-                          },
-                          items: _sports.map((String sport){
-                            return new DropdownMenuItem<String>(
-                              child: new Text(sport,
-                              style: new TextStyle(
-                              fontFamily: 'Architects',
-                              color: Colors.white),
-                            ),
-                          value: sport
-                          );
-                          }).toList(),
-                        ),
+                          child: new Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(left: 20, right: 15),
+                                  child: new Column(
+                                    children: <Widget>[
+                                      Icon(FontAwesomeIcons.facebook,
+                                      color: Colors.white,)
+                                    ],
+                                  ),
+                                ),DropdownButton(
+                                      style: TextStyle(color: Colors.white, decorationColor: Colors.white),
+                                      hint: Text('Please choose a sport.',
+                                      style: new TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'Architects'),
+                                    ),
+                                    value: _selectedSport,
+                                    onChanged: (newValue){
+                                      setState(() {
+                                        _selectedSport = newValue; 
+                                      });
+                                    },
+                                    items: _sports.map((String sport){
+                                      return new DropdownMenuItem<String>(
+                                        child: new Text(sport,
+                                        style: new TextStyle(
+                                        fontFamily: 'Architects',
+                                        color: Colors.white),
+                                      ),
+                                    value: sport
+                                    );
+                                    }).toList(),
+                                  ), 
+                              ],
+                            ), 
                         )
                         ),
                       ),
@@ -183,52 +218,54 @@ class _NewEventState extends State<NewEventPage> {
                   ),
                 ),
                 new Padding(
-                  padding: EdgeInsets.only(top: 30.0, left: 30),
+                  padding: EdgeInsets.only(top: 30.0, left: 20),
                   child: new Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       new Row(
                         children: <Widget>[
-                          new Column(
+                          new Padding(
+                            padding: EdgeInsets.only(right: 15),
+                            child: new Column(
                             children: <Widget>[
                               Icon(
                                 Icons.person,
-                                color: Colors.red[400],
+                                color: Colors.white,
                               ),
                             ],
                           ),
-                          new Column(
+                          ),
+                           new Column(      
                             children: <Widget>[
-                              new Text('  Number of players:',
+                              new Text('Number of players (max):',
                               style: TextStyle(
                               fontSize: 15,
                               color: Colors.white,
                               fontFamily: 'Architects'
                               ),)
                             ],
-                          )
+                          ) ,
                         ],
                       )
                     ],
                   ),
                 ),
                 new Padding(
-                  padding: EdgeInsets.only(top: 30.0),
+                  padding: EdgeInsets.only(top: 10.0),
                   child: new Card(
-                    margin: EdgeInsets.all(10),
                     color: Colors.transparent,
-                    shape: StadiumBorder(side: BorderSide(width: 2.0)),
                     child:new Container(
+                      padding: EdgeInsets.all(11),
                       child: new Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                         new Column(
                           children: <Widget>[
                             new Container(
-                              width: 90,
-                              height: 90,
+                              width: 50,
+                              height: 50,
                               decoration: BoxDecoration(
-                                shape: BoxShape.circle,                               
+                                shape: BoxShape.rectangle,                               
                                 gradient: LinearGradient(
                                   colors: [
                                   const Color.fromRGBO(244, 100, 66, 1.0),
@@ -236,7 +273,6 @@ class _NewEventState extends State<NewEventPage> {
                                   ],
                                   begin: FractionalOffset.topRight,
                                   end: FractionalOffset.bottomLeft,
-
                                 )
                               ),                              
                               child: new FloatingActionButton(
@@ -269,10 +305,10 @@ class _NewEventState extends State<NewEventPage> {
                           new Column(
                             children: <Widget>[
                             new Container(
-                              width: 90,
-                              height: 90,
+                              width: 50,
+                              height: 50,
                               decoration: BoxDecoration(
-                                shape: BoxShape.circle,                               
+                                shape: BoxShape.rectangle,                               
                                 gradient: LinearGradient(
                                   colors: [
                                   const Color.fromRGBO(244, 100, 66, 1.0),
@@ -299,10 +335,41 @@ class _NewEventState extends State<NewEventPage> {
                   ),
                   )
                 ),
+                new Padding(
+                  padding: EdgeInsets.only(top: 10, left: 20),
+                    child: new Row(      
+                    children: <Widget>[
+                      new Padding(
+                        padding: EdgeInsets.only(right: 15),
+                        child:new Column(
+                          children: <Widget>[
+                            Icon(
+                              Icons.calendar_today,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                      new Column(
+                        children: <Widget>[
+                          new Text('Date:',
+                          style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                          fontFamily: 'Architects'
+                          ),)
+                        ],
+                      )
+
+                    ],
+                  ) ,
+                ),
                 //Date
                 new Padding(
-                  padding: EdgeInsets.only(top: 30.0),
-                  child: new Column(
+                  padding: EdgeInsets.only(top: 10.0),
+                  child: new  Card( 
+                    color: Colors.transparent, 
+                    child: new Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(_selectedDateValue = "${selectedDate.day}/${selectedDate.month} / ${selectedDate.year}",
@@ -312,7 +379,6 @@ class _NewEventState extends State<NewEventPage> {
                         fontSize: 20,
                         ),
                       ),
-                      SizedBox(height: 20.0,),
                       new InkWell(
                         onTap: () => _selectDate(context),
                         child: new Container(
@@ -352,6 +418,7 @@ class _NewEventState extends State<NewEventPage> {
                       ),
                     ],
                   ),
+                  )            
                 ),
                 new Padding(
                   padding: EdgeInsets.only(top: 30.0, bottom: 10.0),
@@ -387,6 +454,9 @@ class _NewEventState extends State<NewEventPage> {
                   ),
                 )
               ],
+            ) , 
+              ),
+            ),
             )
           ],
         ),

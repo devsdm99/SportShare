@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportshareapp/Pages/EventListPage.dart';
 import 'package:sportshareapp/Pages/NewEventPage.dart';
 import 'package:sportshareapp/Pages/ProfilePage.dart';
 import '../BackgroundGradient.dart';
@@ -59,12 +60,14 @@ class _HomePageState extends State<HomePage>{
 
     switch(page)
     {
-      case 1:
+      case 0:
+        return EventListPage();
       break;
       case 2:
         return NewEventPage(uid: widget.uid);
       break;
       case 3:
+        //return MapsPage();
       break;
       case 4:
         return ProfilePage(uid: widget.uid);

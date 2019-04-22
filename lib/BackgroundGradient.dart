@@ -9,8 +9,7 @@ class BackgroundGradient extends StatelessWidget
         new GradientBack()
       ],
     );
-  }
-  
+  } 
 }
 
 class GradientBack extends StatelessWidget{
