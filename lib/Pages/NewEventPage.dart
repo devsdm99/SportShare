@@ -472,7 +472,7 @@ class _NewEventState extends State<NewEventPage> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       Firestore.instance.collection("events")
-      .document(uid)
+      .document(uid).collection("UserEvents").document()
       .setData({"event_name":eventName, "type_sport":selectedSport, "players":players,"date": selectedDateValue});
     }
   }

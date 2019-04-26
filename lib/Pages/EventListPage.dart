@@ -14,9 +14,21 @@ class _EventListPage extends State<EventListPage>{
 
   Future getEvents() async {
     var firestore = Firestore.instance;
+    List<String> templist = new List<String>();
+    Map<String,dynamic> queries = new Map<String,dynamic>();
+    QuerySnapshot snapQuery;
     QuerySnapshot qn = await firestore.collection("events").getDocuments();
+    for(int i = 0; i < qn.documents.length; i++)
+    {
+      snapQuery = await firestore.collection("events").document(qn.documents[i].documentID).collection("UserEvents").getDocuments();
+      for(int j = 0; j < snapQuery.documents.length; j++)
+      {
+        queries.map(snapQuery.documents[j].data);
+      }
 
-    return qn.documents;
+    }
+
+    return queries;
   }
 
 

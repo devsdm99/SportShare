@@ -11,6 +11,6 @@ class Palette {
 
   static Color blueSkyLighter = Color(0x10068FFA);
 
-    static Color redLight = Colors.red[400];
-    static Color orangeLight = Colors.limeAccent;
+  static Color redLight = Colors.red[400];
+  static Color orangeLight = Colors.limeAccent;
 }
