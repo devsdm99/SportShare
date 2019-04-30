@@ -181,7 +181,7 @@ class _NewEventState extends State<NewEventPage> {
                                   padding: EdgeInsets.only(left: 20, right: 15),
                                   child: new Column(
                                     children: <Widget>[
-                                      Icon(FontAwesomeIcons.facebook,
+                                      Icon(FontAwesomeIcons.footballBall,
                                       color: Colors.white,)
                                     ],
                                   ),
