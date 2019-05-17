@@ -19,15 +19,16 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: new Stack(
+        children: <Widget>[
+          BackgroundGradient(),
+          ListView(
         children: <Widget>[
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Hero(
                 tag: 'assets/guti.jpg',
                 child: new Column(
-                  mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     BackgroundGradient(),
                     GestureDetector(
@@ -57,7 +58,49 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(height: 4.0),
               Text(
                 'Palamós',
-                style: TextStyle(fontFamily: 'Montserrat', color: Colors.grey),
+                style: TextStyle(fontFamily: 'Montserrat', color: Colors.white),
+              ),
+              SizedBox(height: 10.0),
+              new Row(
+                children: <Widget>[   
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'Description: ',
+                      style: TextStyle(
+                        fontFamily: 'Architects', 
+                        color: Colors.white,
+                         fontSize: 23,
+                         fontWeight: FontWeight.bold
+                        ),
+                    ), 
+                  )
+                ],
+              ),
+              new Column(
+                children: <Widget>[ 
+                  new Container(
+                  height: 150.0,
+                  color: Colors.transparent,
+                  child: new Container(
+                      decoration: new BoxDecoration(
+                          color: Colors.red,  
+                          borderRadius: new BorderRadius.only(
+                              topLeft: const Radius.circular(40.0),
+                              topRight: const Radius.circular(40.0),
+                              bottomLeft: const Radius.circular(40.0),
+                              bottomRight: const Radius.circular(40.0))),
+                      child: new Center(
+                        child: new Text(
+                          '"Aixó son 2 lines de codi"',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Architects',
+                          fontSize: 20
+                        ),),
+                      )),
+                ),
+                ],
               ),
               Padding(
                 padding: EdgeInsets.all(30.0),
@@ -68,7 +111,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          '24K',
+                          '∞',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold),
@@ -78,7 +121,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           'FOLLOWERS',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
-                              color: Colors.grey),
+                              color: Colors.white),
                         )
                       ],
                     ),
@@ -86,17 +129,17 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          '31',
+                          '∞',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          'TRIPS',
+                          'EVENTS',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
-                              color: Colors.grey),
+                              color: Colors.white),
                         )
                       ],
                     ),
@@ -104,17 +147,17 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          '21',
+                          '∞',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          'BUCKET LIST',
+                          'FIRENDS',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
-                              color: Colors.grey),
+                              color: Colors.white),
                         )
                       ],
                     )
@@ -123,16 +166,6 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    IconButton(icon: Icon(Icons.table_chart)),
-                    IconButton(
-                      icon: Icon(Icons.menu),
-                      onPressed: () {},
-                    )
-                  ],
-                ),
               ),
               buildImages(),
               buildInfoDetail(),
@@ -142,6 +175,8 @@ class _ProfilePageState extends State<ProfilePage> {
           )
         ],
       ),
+        ],
+      )
     );
 
   }
@@ -181,7 +216,7 @@ Widget buildInfoDetail() {
                 Text(
                   'Teresa Soto',
                   style: TextStyle(
-                      color: Colors.grey.shade700,
+                      color: Colors.white,
                       fontFamily: 'Montserrat',
                       fontSize: 11.0),
                 ),
@@ -195,7 +230,7 @@ Widget buildInfoDetail() {
                 Text(
                   '3 Videos',
                   style: TextStyle(
-                      color: Colors.grey.shade500,
+                      color: Colors.white,
                       fontFamily: 'Montserrat',
                       fontSize: 11.0),
                 )

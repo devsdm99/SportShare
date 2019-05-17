@@ -101,8 +101,6 @@ class _NewEventState extends State<NewEventPage> {
         ),
         centerTitle: true,
         backgroundColor: Colors.red,
-        actions: <Widget>[
-        ],
       ),
       body: new Form(
         key: _formKey,
@@ -425,14 +423,14 @@ class _NewEventState extends State<NewEventPage> {
                   child: new Column(
                       children: <Widget>[
                       new Container(
-                        width: 100,
-                        height: 100,
+                        width: 200,
+                        height: 50,
                         decoration: BoxDecoration(
-                          shape: BoxShape.circle,                               
+                          shape: BoxShape.rectangle,                               
                           gradient: LinearGradient(
                             colors: [
-                            const Color.fromRGBO(244, 100, 66, 1.0),
-                            const Color.fromRGBO(244, 77, 65, 10)
+                            const Color.fromRGBO(1, 1, 66, 1.0),
+                            const Color.fromRGBO(244, 1, 65, 10)
                             ],
                             begin: FractionalOffset.topRight,
                             end: FractionalOffset.bottomLeft,
@@ -443,7 +441,7 @@ class _NewEventState extends State<NewEventPage> {
                           backgroundColor: Colors.transparent,
                           elevation: 0.0,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16.0))),
-                          child: new Text('Finish',
+                          child: new Text('CREATE +',
                             style: TextStyle(
                               fontSize: 20,
                               fontFamily: 'Architects'
@@ -471,6 +469,10 @@ class _NewEventState extends State<NewEventPage> {
   {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
+      if(eventName.isEmpty)
+      {
+        eventName ="Indefinido";
+      }
       Firestore.instance.collection("events")
       .document(uid).collection("UserEvents").document()
       .setData({"event_name":eventName, "type_sport":selectedSport, "players":players,"date": selectedDateValue});

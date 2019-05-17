@@ -7,6 +7,8 @@ import 'package:sportshareapp/auth.dart';
 import 'package:flip_box_bar/flip_box_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'FindEventPage.dart';
 class HomePage extends StatefulWidget{
   @override
   HomePage({this.auth, this.onSignedOut, this.uid});
@@ -62,6 +64,9 @@ class _HomePageState extends State<HomePage>{
     {
       case 0:
         return EventListPage();
+      break;
+      case 1:
+        return FindEventPage();
       break;
       case 2:
         return NewEventPage(uid: widget.uid);

@@ -6,6 +6,9 @@ class EventWidget extends StatefulWidget
   
   String event_name, typeSport, eventDate, admin;
   int players;
+
+  String joinedString = "Join";
+  bool joined = false;
   _EventState createState() => _EventState();
 }
 
@@ -58,7 +61,7 @@ class _EventState extends State<EventWidget>{
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.all(10),
-                        child: Text('Players: ' + widget.players.toString(),
+                        child: Text('Max Players: ' + widget.players.toString(),
                         style: TextStyle(
                           fontFamily: 'Architects',
                         )),
@@ -78,26 +81,12 @@ class _EventState extends State<EventWidget>{
                   )
                   ],
                 ),
-                Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        Icon(Icons.ac_unit)
-                      ],
-
-                    )
-
-                  ],
-                )
               ],
             ),
             Padding(
               padding: EdgeInsets.all(10),
               child:new InkWell(
+                onTap: ChangeCurrentState,
                 child: new Container(
                   margin: new EdgeInsets.only(
                   top: 30.0, left: 20.0, right: 20, bottom: 20),
@@ -123,7 +112,7 @@ class _EventState extends State<EventWidget>{
                   ),
                   child: new Center(
                     child: new Text(
-                      "Join",
+                      widget.joinedString,
                       style: new TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -138,5 +127,23 @@ class _EventState extends State<EventWidget>{
         ),
       ),
     );
+  }
+
+  ChangeCurrentState() async{
+    
+    String joineds;
+    if(!widget.joined)
+    {
+      widget.joined = true;
+      joineds = "Joined";
+    }else
+    {
+      widget.joined = false;
+      joineds = "Join";
+    }
+
+    setState(() {
+      widget.joinedString = joineds;
+    });
   }
 }

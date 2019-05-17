@@ -205,7 +205,6 @@ class _LoginPage extends State<LoginPage> {
      //LOGIN    
       Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage(uid: userId)));
     }
- 
   }
 
   void signUp() async {
