@@ -201,9 +201,35 @@ class _LoginPage extends State<LoginPage> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       String userId = await widget.auth.signInWithEmailAndPassword(_email, _password);
-      widget.onSignedIn();
+      if(userId != null)
+      {
+        widget.onSignedIn();
      //LOGIN    
-      Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage(uid: userId)));
+        Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage(uid: userId)));
+      }else{
+        showDialog(
+         context: context,
+         builder: (BuildContext context){
+           return AlertDialog(
+             title: new Text("Invalid Credentials"),
+             content: new Text("The credentials typed are not correct, try again"),
+             actions: <Widget>[
+               new FlatButton(
+                 child: new Text("Close",
+                 style: TextStyle(
+                   color: Colors.black
+                 ),),
+                 onPressed: (){
+                   Navigator.of(context).pop();
+                   Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => LoginPage()));
+                 },
+               )
+             ],
+           );
+         }
+       );
+      }
+     
     }
   }
 

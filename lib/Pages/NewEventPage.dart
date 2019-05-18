@@ -411,7 +411,9 @@ class _NewEventState extends State<NewEventPage> {
                 ),
                 new Padding(
                   padding: EdgeInsets.only(top: 30.0, bottom: 10.0),
-                  child: new Column(
+                  child: new GestureDetector(
+                    onTap: () => CreateNewEvent(_eventName, _selectedSport, _playersValue, _selectedDateValue, widget.uid),
+                    child:new Column(
                       children: <Widget>[
                         new Container(
                           height: 100,
@@ -419,6 +421,7 @@ class _NewEventState extends State<NewEventPage> {
                           child: new Column(
                             children: <Widget>[
                               new Card(
+                                
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15)
                                 ),
@@ -437,7 +440,10 @@ class _NewEventState extends State<NewEventPage> {
                           ) 
                         ),
                       ],
-                    ),
+                    ), 
+                  )
+                  
+
                   )
                 ],
                 ) , 
@@ -457,13 +463,34 @@ class _NewEventState extends State<NewEventPage> {
   {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      if(eventName.isEmpty)
+      if(eventName == null)
       {
         eventName ="Undefined";
       }
       Firestore.instance.collection("events")
       .document(uid).collection("UserEvents").document()
       .setData({"event_name":eventName, "type_sport":selectedSport, "players":players,"date": selectedDateValue});
+
+      showDialog(
+         context: context,
+         builder: (BuildContext context){
+           return AlertDialog(
+             title: new Text("Event"),
+             content: new Text("Event created succesfully"),
+             actions: <Widget>[
+               new FlatButton(
+                 child: new Text("Close",
+                 style: TextStyle(
+                   color: Colors.black
+                 ),),
+                 onPressed: (){
+                   Navigator.of(context).pop();
+                 },
+               )
+             ],
+           );
+         }
+       );
     }
   }
 }

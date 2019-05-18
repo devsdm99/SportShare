@@ -88,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       fontSize: 25
                       ),
                   ),
-                                    Padding(
+                  Padding(
                     padding: EdgeInsets.all(30.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
