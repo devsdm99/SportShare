@@ -39,6 +39,15 @@ class _EventState extends State<EventWidget>{
             ),
             new Row(
               children: <Widget>[
+                Expanded(
+                  child: Divider(
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            new Row(
+              children: <Widget>[
                 new Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -47,11 +56,22 @@ class _EventState extends State<EventWidget>{
                     children: <Widget>[
                       new Padding(
                         padding: EdgeInsets.all(10),
-                        child: Text('Sport: '+ widget.typeSport,
-                        style: TextStyle(
-                          fontFamily: 'Architects',
-                        ),
-                        ),
+                        child: new Row(
+                          children: <Widget>[
+                            Text('Sport: ',
+                              style: TextStyle(
+                                fontFamily: 'Architects',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                              ),
+                            ),
+                            Text(widget.typeSport,
+                              style: TextStyle(
+                                fontFamily: 'Architects',
+                              ),
+                            ),
+                          ],
+                        )
                       )
                     ],
                   ),
@@ -61,10 +81,22 @@ class _EventState extends State<EventWidget>{
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.all(10),
-                        child: Text('Max Players: ' + widget.players.toString(),
-                        style: TextStyle(
-                          fontFamily: 'Architects',
-                        )),
+                        child: new Row(
+                          children: <Widget>[
+                            Text('Max Players: ',
+                              style: TextStyle(
+                                fontFamily: 'Architects',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                              ),
+                            ),
+                            Text(widget.players.toString(),
+                              style: TextStyle(
+                                fontFamily: 'Architects',
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -72,10 +104,22 @@ class _EventState extends State<EventWidget>{
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.all(10),
-                        child: Text('Date: ' + widget.eventDate,
-                        style: TextStyle(
-                          fontFamily: 'Architects',
-                        ),),
+                        child: new Row(
+                          children: <Widget>[
+                            Text('Event date: ',
+                              style: TextStyle(
+                                fontFamily: 'Architects',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                              ),
+                            ),
+                            Text(widget.eventDate,
+                              style: TextStyle(
+                                fontFamily: 'Architects',
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   )

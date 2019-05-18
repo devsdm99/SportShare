@@ -40,7 +40,8 @@ class _EventListPage extends State<EventListPage>{
         title: Text("Events List",
         style: TextStyle(
           fontSize: 30,
-          fontWeight: FontWeight.bold
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Architects'
         ),),
       ),
       body: new Stack(
@@ -57,12 +58,13 @@ class _EventListPage extends State<EventListPage>{
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Architects'
                   ),),
                 );
               }else{
                 return ListView.builder(
-                  itemCount:snapshot.data.length ,
+                  itemCount: snapshot.data.length ,
                   itemBuilder: (_,index){
                     return ListTile(
                       title: new EventWidget(event_name: snapshot.data[index]["event_name"],players: snapshot.data[index]["players"], eventDate: snapshot.data[index]["date"], typeSport: snapshot.data[index]["type_sport"], admin: snapshot.data[index]["admin"] )

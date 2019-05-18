@@ -108,23 +108,14 @@ class _NewEventState extends State<NewEventPage> {
           children: <Widget>[
             BackgroundGradient(),
             new Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(3),
               child:new Card(
                 child: new Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Palette.redLight,
-                      Palette.redLight
-                    ],
-                  ),
-                ),
-                child: new ListView(
+                  color: Color.fromRGBO(255, 131, 107, 1),
+                  child: new ListView(
                   children: <Widget>[
                     Padding(
-                    padding: EdgeInsets.only(top: 60.0),
+                    padding: EdgeInsets.only(top: 30.0),
                     child: new Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -422,39 +413,36 @@ class _NewEventState extends State<NewEventPage> {
                   padding: EdgeInsets.only(top: 30.0, bottom: 10.0),
                   child: new Column(
                       children: <Widget>[
-                      new Container(
-                        width: 200,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,                               
-                          gradient: LinearGradient(
-                            colors: [
-                            const Color.fromRGBO(1, 1, 66, 1.0),
-                            const Color.fromRGBO(244, 1, 65, 10)
+                        new Container(
+                          height: 100,
+                          width: 200,
+                          child: new Column(
+                            children: <Widget>[
+                              new Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)
+                                ),
+                                color: Colors.red,
+                                child: Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: new Text('CREATE +',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: 'Architects',
+                                    color: Colors.white
+                                  ),),
+                                ), 
+                              ),
                             ],
-                            begin: FractionalOffset.topRight,
-                            end: FractionalOffset.bottomLeft,
-                          )
+                          ) 
                         ),
-                        child: new FloatingActionButton(
-                          onPressed:  () => CreateNewEvent(_eventName, _selectedSport, _playersValue, _selectedDateValue, widget.uid),
-                          backgroundColor: Colors.transparent,
-                          elevation: 0.0,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16.0))),
-                          child: new Text('CREATE +',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Architects'
-                            ),),
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ) , 
+                      ],
+                    ),
+                  )
+                ],
+                ) , 
+                ),
               ),
-            ),
             )
           ],
         ),
@@ -471,7 +459,7 @@ class _NewEventState extends State<NewEventPage> {
       _formKey.currentState.save();
       if(eventName.isEmpty)
       {
-        eventName ="Indefinido";
+        eventName ="Undefined";
       }
       Firestore.instance.collection("events")
       .document(uid).collection("UserEvents").document()
