@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sportshareapp/BackgroundGradient.dart';
 import 'package:sportshareapp/Widgets/EventWidget.dart';
@@ -16,7 +17,6 @@ class _EventListPage extends State<EventListPage>{
   Future getEvents() async {
     var firestore = Firestore.instance;
     List<DocumentSnapshot> templist = new List<DocumentSnapshot>();
-    Map<String,dynamic> queries = new Map<String,dynamic>();
     QuerySnapshot snapQuery;
     QuerySnapshot qn = await firestore.collection("events").getDocuments();
     for(int i = 0; i < qn.documents.length; i++)
@@ -33,7 +33,10 @@ class _EventListPage extends State<EventListPage>{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    
+    double widthScreen = MediaQuery.of(context).size.width;
+    
+        // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
@@ -47,7 +50,26 @@ class _EventListPage extends State<EventListPage>{
       body: new Stack(
         children: <Widget>[
           BackgroundGradient(),
-          FutureBuilder(
+          Column(
+            children: <Widget>[
+              new Row(
+                children: <Widget>[
+                Container(
+                  height: 100,
+                  width: widthScreen,
+                  color: Colors.red,
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+
+                    children: <Widget>[
+                      Text("Welcome to SportShare: ")
+                    ],
+                  ),
+                ),
+            ],
+          ),
+          Expanded(
+            child: FutureBuilder(
             future: getEvents(),
             builder: (_,snapshot)
             {
@@ -73,6 +95,10 @@ class _EventListPage extends State<EventListPage>{
               }
             }
           ),
+          )
+            ],
+          ),
+
         ],
       )
     );

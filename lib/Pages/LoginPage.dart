@@ -201,7 +201,7 @@ class _LoginPage extends State<LoginPage> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       String userId = await widget.auth.signInWithEmailAndPassword(_email, _password);
-      if(userId != null)
+      if(userId != "" )
       {
         widget.onSignedIn();
      //LOGIN    
@@ -221,7 +221,6 @@ class _LoginPage extends State<LoginPage> {
                  ),),
                  onPressed: (){
                    Navigator.of(context).pop();
-                   Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => LoginPage()));
                  },
                )
              ],

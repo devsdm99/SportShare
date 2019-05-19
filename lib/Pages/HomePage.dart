@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage>{
 
   int currentPage = 0;
   GlobalKey bottomNavigationKey = GlobalKey();
+  String username;
 
   void _signOut()async{
     try {
@@ -30,6 +31,18 @@ class _HomePageState extends State<HomePage>{
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<String> _getUsername()
+  async {
+        var firestore = Firestore.instance;
+        QuerySnapshot snapQuery;
+        QuerySnapshot qn = await firestore.collection("users").getDocuments();
+        for(int i = 0; i < qn.documents.length; i++)
+        {
+          //if documents == user.uid return name
+
+        }
   }
 
   @override
