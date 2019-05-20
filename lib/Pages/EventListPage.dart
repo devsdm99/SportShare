@@ -6,14 +6,32 @@ import 'package:sportshareapp/BackgroundGradient.dart';
 import 'package:sportshareapp/Widgets/EventWidget.dart';
 
 class EventListPage extends StatefulWidget{
-  EventListPage();
+  EventListPage({this.uid});
 
-    String nombre;
+  String uid;
   _EventListPage createState() => _EventListPage();
 }
 
 class _EventListPage extends State<EventListPage>{
+  String nombre = "";
 
+  Future<String> _getUsername()
+  async {
+        var firestore = Firestore.instance;
+        QuerySnapshot qn = await firestore.collection("users").getDocuments();
+        for(int i = 0; i < qn.documents.length; i++)
+        {
+          if(qn.documents[i].documentID == widget.uid)
+          {
+            nombre = qn.documents[i].data["name"];
+          }
+        }
+  }
+    initState() {
+      super.initState();
+      // Add listeners to this class
+      _getUsername();
+    }
   Future getEvents() async {
     var firestore = Firestore.instance;
     List<DocumentSnapshot> templist = new List<DocumentSnapshot>();
@@ -38,21 +56,14 @@ class _EventListPage extends State<EventListPage>{
     
         // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Text("Events List",
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Architects'
-        ),),
-      ),
       body: new Stack(
         children: <Widget>[
           BackgroundGradient(),
           Column(
             children: <Widget>[
-              new Row(
+              Padding(
+                padding: EdgeInsets.only(top:10),
+                child: new Row(
                 children: <Widget>[
                 Container(
                   height: 100,
@@ -60,13 +71,44 @@ class _EventListPage extends State<EventListPage>{
                   color: Colors.red,
                   child: new Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-
                     children: <Widget>[
-                      Text("Welcome to SportShare: ")
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                      Text("Welcome to SportShare",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20),
+                      ),
+                      Text(nombre,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                        ),
+                      ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child:Container(
+                        height: 75.0,
+                        width: 75.0,
+                        decoration: BoxDecoration(                    
+                        borderRadius: BorderRadius.circular(62.5),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage('assets/guti.jpg'),       
+                          ),
+                        ),
+                      ),
+                      )
+
                     ],
                   ),
                 ),
             ],
+          ),
           ),
           Expanded(
             child: FutureBuilder(

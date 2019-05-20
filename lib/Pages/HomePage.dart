@@ -36,18 +36,26 @@ class _HomePageState extends State<HomePage>{
   Future<String> _getUsername()
   async {
         var firestore = Firestore.instance;
-        QuerySnapshot snapQuery;
         QuerySnapshot qn = await firestore.collection("users").getDocuments();
         for(int i = 0; i < qn.documents.length; i++)
         {
-          //if documents == user.uid return name
-
+          if(qn.documents[i].documentID == widget.uid)
+          {
+            username == qn.documents[i].data[0]["name"];
+          }
         }
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
+    initState() {
+      super.initState();
+      // Add listeners to this class
+      _getUsername();
+    }
+
     return MaterialApp(
     home: Scaffold( 
       bottomNavigationBar: FlipBoxBar(
@@ -76,7 +84,7 @@ class _HomePageState extends State<HomePage>{
     switch(page)
     {
       case 0:
-        return EventListPage();
+        return EventListPage(uid: widget.uid);
       break;
       case 1:
         return FindEventPage();
