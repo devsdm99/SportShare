@@ -16,7 +16,7 @@ class NewEventPage extends StatefulWidget
 class _NewEventState extends State<NewEventPage> {
   List<String> _sports = ['Football', 'Basketball', 'Tennis', 'Volleyball']; // Option 2
   String _eventName, _selectedSport, _creator;
-  int _playersValue = 1;
+  int _playersValue = 2;
   String _players;
 
   final _formKey = GlobalKey<FormState>();
@@ -50,7 +50,7 @@ class _NewEventState extends State<NewEventPage> {
 
   incrementarPersonas(){
     setState(() {
-      if(_playersValue >=1 ){
+      if(_playersValue >=2 ){
         _playersValue++;
       }
     });
@@ -58,7 +58,7 @@ class _NewEventState extends State<NewEventPage> {
   void quitarPersonas()
   {
     setState(() {
-      if(_playersValue > 1){
+      if(_playersValue > 2){
         _playersValue--;
       }else{
         return "No puedes poner un numero de jugadores menor a 1.";

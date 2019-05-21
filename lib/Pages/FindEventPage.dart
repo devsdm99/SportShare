@@ -44,24 +44,9 @@ class _FindEventPage extends State<FindEventPage> {
       body: new Stack(
         children:<Widget>[
           BackgroundGradient(),
-          new Row(
+          new Column(
             children: <Widget>[
-              new TextFormField(
-                validator: (input) {
-              if (input.isEmpty) {
-                return 'Please type an email';
-              }
-            },
-            //onSaved: (input) => _email = input,
-            decoration: InputDecoration(
-                labelText: 'Find for event sport',
-                labelStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.white))),
-              ),
+              Text("ese")
             ],
           )
         ]

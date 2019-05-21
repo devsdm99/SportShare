@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage>{
         return NewEventPage(uid: widget.uid);
       break;
       case 3:
-        //return MapsPage();
+        return EventListPage(uid: widget.uid);
       break;
       case 4:
         return ProfilePage(uid: widget.uid);
