@@ -2,6 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sportshareapp/BackgroundGradient.dart';
 import 'package:sportshareapp/Widgets/EventWidget.dart';
 
@@ -31,6 +32,7 @@ class _EventListPage extends State<EventListPage>{
       super.initState();
       // Add listeners to this class
       _getUsername();
+      SystemChrome.setEnabledSystemUIOverlays ([SystemUiOverlay.top]);
     }
   Future getEvents() async {
     var firestore = Firestore.instance;
@@ -61,18 +63,20 @@ class _EventListPage extends State<EventListPage>{
           BackgroundGradient(),
           Column(
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top:10),
-                child: new Row(
+               new Row(
                 children: <Widget>[
                 Container(
-                  height: 100,
+                  height: 125,
                   width: widthScreen,
                   color: Colors.red,
                   child: new Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Column(
+                      Padding(
+                        padding: EdgeInsets.only(top:50),
+                        child: Column(
+                          children: <Widget>[
+                            Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -81,7 +85,7 @@ class _EventListPage extends State<EventListPage>{
                           color: Colors.white,
                           fontSize: 20),
                       ),
-                      Text(nombre,
+                      Text("Josep",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,
@@ -89,8 +93,13 @@ class _EventListPage extends State<EventListPage>{
                       ),
                         ],
                       ),
+
+                          ],
+                        ),
+                      ),
+
                       Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: EdgeInsets.only(left: 20, top: 20),
                         child:Container(
                         height: 75.0,
                         width: 75.0,
@@ -108,7 +117,6 @@ class _EventListPage extends State<EventListPage>{
                   ),
                 ),
             ],
-          ),
           ),
           Expanded(
             child: FutureBuilder(

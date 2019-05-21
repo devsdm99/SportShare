@@ -5,9 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:sportshareapp/BackgroundGradient.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../auth.dart';
-import 'LoginPage.dart';
 class ProfilePage extends StatefulWidget
 {
   @override
@@ -32,7 +32,6 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   final ref = FirebaseStorage.instance.ref().child('testimage');
-  File _image;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +50,39 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: 100,
                 child: new Column(
                   children: <Widget>[
-                    new Card(
+                    new GestureDetector(
+                      onTap: (){
+                        Alert(
+                          context: context,
+                          title: "LOGIN",
+                          content: Column(
+                            children: <Widget>[
+                              TextField(
+                                decoration: InputDecoration(
+                                  icon: Icon(Icons.account_circle),
+                                  labelText: 'Username',
+                                ),
+                              ),
+                              TextField(
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  icon: Icon(Icons.lock),
+                                  labelText: 'Password',
+                                ),
+                              ),
+                            ],
+                          ),
+                          buttons: [
+                            DialogButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Text(
+                                "LOGIN",
+                                style: TextStyle(color: Colors.white, fontSize: 20),
+                              ),
+                            )
+                          ]).show();
+                      },
+                      child:new Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)
                       ),
@@ -66,6 +97,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),),
                       ), 
                     ),
+                    )
+
                   ],
                 ) 
               ),
@@ -239,7 +272,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           color: Colors.white,
                           fontFamily: 'Architects',
                           fontSize: 20
-                        ),),
+                        ),
+                        ),
                       )),
                     ),
                     ],
@@ -265,6 +299,31 @@ Widget buildImages() {
   );
 }
 
+Widget _ackAlert() {
+      return AlertDialog(
+        title: Text('Enter new data'),
+        content: new Stack(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Text("Ese"),
+                Container(
+                  width: 2,
+                )
+              ],
+            )
+          ],
+        ),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Ok'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+}
                       
 Widget buildInfoDetail() {
   return Padding(
@@ -347,6 +406,7 @@ Widget buildInfoDetail() {
     ),
   );
 }
+
 
 }
 

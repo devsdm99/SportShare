@@ -440,9 +440,7 @@ class _NewEventState extends State<NewEventPage> {
                         ),
                       ],
                     ), 
-                  )
-                  
-
+                  )               
                   )
                 ],
                 ) , 
