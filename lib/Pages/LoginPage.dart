@@ -6,10 +6,9 @@ import 'HomePage.dart';
 import 'RegisterPage.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({this.auth, this.onSignedIn});//parametros de esta clase
+  LoginPage({this.auth});//parametros de esta clase
 
   final BaseAuth auth;
-  final VoidCallback onSignedIn;
   
   _LoginPage createState() => _LoginPage();
 }
@@ -203,8 +202,6 @@ class _LoginPage extends State<LoginPage> {
       String userId = await widget.auth.signInWithEmailAndPassword(_email, _password);
       if(userId != "" )
       {
-        widget.onSignedIn();
-     //LOGIN    
         Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage(uid: userId)));
       }else{
         showDialog(

@@ -53,5 +53,4 @@ class _FindEventPage extends State<FindEventPage> {
       )
     );
   }
-
 }

@@ -21,7 +21,7 @@ class _RootPageState extends State<RootPage>{
     super.initState();
     widget.auth.currentUser().then((userId){
       setState((){
-        //authStatus = userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
+        authStatus = userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
       });
     });
   }
@@ -37,9 +37,9 @@ class _RootPageState extends State<RootPage>{
       case AuthStatus.notSignedIn:
             return new LoginPage(
               auth: widget.auth,
-              onSignedIn: _signedIn,);
+              );
       case AuthStatus.signedIn:
-        return new HomePage();
+        return new HomePage(auth: widget.auth);
     }
       // TODO: implement build
 

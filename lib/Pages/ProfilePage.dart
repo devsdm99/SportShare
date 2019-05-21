@@ -1,14 +1,19 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:sportshareapp/BackgroundGradient.dart';
+
+import '../auth.dart';
+import 'LoginPage.dart';
 class ProfilePage extends StatefulWidget
 {
   @override
-  ProfilePage({this.uid});
+  ProfilePage({this.uid, this.auth});
   final String uid;
+  final BaseAuth auth;
   
   State<StatefulWidget> createState() => _ProfilePageState();
 
@@ -20,6 +25,10 @@ class _ProfilePageState extends State<ProfilePage> {
     var firestore = Firestore.instance;
     QuerySnapshot qn = await firestore.collection("events").document(widget.uid).collection("UserEvents").getDocuments();
     return qn.documents;
+  }
+
+  Future<void> signOut() async{
+      await widget.auth.signOut();
   }
 
   final ref = FirebaseStorage.instance.ref().child('testimage');
@@ -66,7 +75,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: 120,
                 child: new Column(
                   children: <Widget>[
-                    new Card(
+                    new GestureDetector(
+                          onTap: () {
+                            signOut();
+                          }, 
+                      child: new Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)
                       ),
@@ -81,6 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),),
                       ), 
                     ),
+                    )
                   ],
                 ) 
               ),
@@ -135,7 +149,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           '∞',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
                         ),
                         SizedBox(height: 5.0),
                         Text(
@@ -153,7 +168,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           '∞',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
                         ),
                         SizedBox(height: 5.0),
                         Text(
@@ -171,7 +187,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           '∞',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
                         ),
                         SizedBox(height: 5.0),
                         Text(

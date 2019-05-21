@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage>{
         return EventListPage(uid: widget.uid);
       break;
       case 4:
-        return ProfilePage(uid: widget.uid);
+        return ProfilePage(uid: widget.uid, auth: widget.auth);
       break;
 
 

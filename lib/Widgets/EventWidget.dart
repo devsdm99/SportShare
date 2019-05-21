@@ -122,7 +122,7 @@ class _EventState extends State<EventWidget>{
                         ),
                       )
                     ],
-                  )
+                  ),
                   ],
                 ),
               ],

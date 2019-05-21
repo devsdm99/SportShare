@@ -421,7 +421,6 @@ class _NewEventState extends State<NewEventPage> {
                           child: new Column(
                             children: <Widget>[
                               new Card(
-                                
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15)
                                 ),
