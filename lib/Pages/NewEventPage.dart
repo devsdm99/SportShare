@@ -144,7 +144,7 @@ class _NewEventState extends State<NewEventPage> {
                                         return 'Please insert a name for the event';
                                      }
                                     },
-                                    style: new TextStyle(color: Colors.white),
+                                    style: new TextStyle(color: Colors.black),
                                     decoration: InputDecoration(
                                     labelText: 'Event Name',
                                     labelStyle: new TextStyle(
@@ -412,7 +412,7 @@ class _NewEventState extends State<NewEventPage> {
                 new Padding(
                   padding: EdgeInsets.only(top: 30.0, bottom: 10.0),
                   child: new GestureDetector(
-                    onTap: () => CreateNewEvent(_eventName, _selectedSport, _playersValue, _selectedDateValue, widget.uid),
+                    onTap: () => CreateNewEvent(),
                     child:new Column(
                       children: <Widget>[
                         new Container(
@@ -456,17 +456,14 @@ class _NewEventState extends State<NewEventPage> {
 
   }
 
-  CreateNewEvent(String eventName, String selectedSport, int players, String selectedDateValue, String uid )
+  CreateNewEvent()
   {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      if(eventName == null)
-      {
-        eventName ="Undefined";
-      }
+
       Firestore.instance.collection("events")
-      .document(uid).collection("UserEvents").document()
-      .setData({"event_name":eventName, "type_sport":selectedSport, "players":players,"date": selectedDateValue});
+      .document(widget.uid).collection("UserEvents").document()
+      .setData({"event_name": _eventName, "type_sport":_selectedSport, "players":_playersValue,"date": _selectedDateValue});
 
       showDialog(
          context: context,

@@ -58,7 +58,8 @@ class _LoginPage extends State<LoginPage> {
                                   labelText: 'EMAIL',
                                   labelStyle: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                                    color: Colors.white,
+                                    fontFamily: 'Architects'),
                                   focusedBorder: UnderlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.white))),
@@ -76,7 +77,8 @@ class _LoginPage extends State<LoginPage> {
                                   labelStyle:
                                       TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                        color: Colors.white,
+                                        fontFamily: 'Architects'),
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide:
                                           BorderSide(color: Colors.white),   

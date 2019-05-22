@@ -16,24 +16,6 @@ class EventListPage extends StatefulWidget{
 class _EventListPage extends State<EventListPage>{
   String nombre = "";
 
-  Future<String> _getUsername()
-  async {
-        var firestore = Firestore.instance;
-        QuerySnapshot qn = await firestore.collection("users").getDocuments();
-        for(int i = 0; i < qn.documents.length; i++)
-        {
-          if(qn.documents[i].documentID == widget.uid)
-          {
-            nombre = qn.documents[i].data["name"];
-          }
-        }
-  }
-    initState() {
-      super.initState();
-      // Add listeners to this class
-      _getUsername();
-      SystemChrome.setEnabledSystemUIOverlays ([SystemUiOverlay.top]);
-    }
   Future getEvents() async {
     var firestore = Firestore.instance;
     List<DocumentSnapshot> templist = new List<DocumentSnapshot>();
@@ -83,12 +65,14 @@ class _EventListPage extends State<EventListPage>{
                       Text("Welcome to SportShare",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20),
+                          fontSize: 20,
+                          fontFamily: 'Architects',),
                       ),
                       Text("Josep",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,
+                          fontFamily: 'Architects',
                         ),
                       ),
                         ],

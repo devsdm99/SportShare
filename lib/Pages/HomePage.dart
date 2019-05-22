@@ -9,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'FindEventPage.dart';
+import 'MainPage.dart';
 class HomePage extends StatefulWidget{
   @override
   HomePage({this.auth, this.onSignedOut, this.uid});
@@ -84,7 +85,7 @@ class _HomePageState extends State<HomePage>{
     switch(page)
     {
       case 0:
-        return EventListPage(uid: widget.uid);
+        return MainPage(uid: widget.uid);
       break;
       case 1:
         return FindEventPage();

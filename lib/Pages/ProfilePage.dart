@@ -19,6 +19,67 @@ class ProfilePage extends StatefulWidget
 
 }
 
+class editWidget extends StatelessWidget
+{
+  @override
+  Widget build(BuildContext context)  {
+    return  GestureDetector(
+        onTap: (){
+          _showDialog(context);
+        },
+        child:new Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15)
+        ),
+        color: Colors.white10,
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: new Text('EDIT ',
+          style: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Architects',
+            color: Colors.white
+          ),),
+        ), 
+      ),
+      );
+
+  }
+
+    Future<Widget> _showDialog(BuildContext context) async {
+    await showDialog<String>(
+      context: context,
+      child: new AlertDialog(
+        contentPadding: const EdgeInsets.all(16.0),
+        content: new Row(
+          children: <Widget>[
+            new Expanded(
+              child: new TextField(
+                autofocus: true,
+                decoration: new InputDecoration(
+                    labelText: 'Full Name', hintText: 'eg. John Smith'),
+              ),
+            )
+          ],
+        ),
+        actions: <Widget>[
+          new FlatButton(
+              child: const Text('CANCEL', style: TextStyle(color: Colors.red),),
+              onPressed: () {
+                Navigator.of(context).pop();
+              }),
+          new FlatButton(
+              child: const Text('OPEN'),
+              onPressed: () {
+                Navigator.pop(context);
+              })
+        ],
+      ),
+    );
+  }
+  
+}
+
 class _ProfilePageState extends State<ProfilePage> {
 
   Future getEvents() async {
@@ -50,55 +111,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: 100,
                 child: new Column(
                   children: <Widget>[
-                    new GestureDetector(
-                      onTap: (){
-                        Alert(
-                          context: context,
-                          title: "LOGIN",
-                          content: Column(
-                            children: <Widget>[
-                              TextField(
-                                decoration: InputDecoration(
-                                  icon: Icon(Icons.account_circle),
-                                  labelText: 'Username',
-                                ),
-                              ),
-                              TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  icon: Icon(Icons.lock),
-                                  labelText: 'Password',
-                                ),
-                              ),
-                            ],
-                          ),
-                          buttons: [
-                            DialogButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: Text(
-                                "LOGIN",
-                                style: TextStyle(color: Colors.white, fontSize: 20),
-                              ),
-                            )
-                          ]).show();
-                      },
-                      child:new Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)
-                      ),
-                      color: Colors.white10,
-                      child: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: new Text('EDIT ',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'Architects',
-                          color: Colors.white
-                        ),),
-                      ), 
-                    ),
-                    )
-
+                    editWidget()
                   ],
                 ) 
               ),
@@ -267,7 +280,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               bottomRight: const Radius.circular(40.0))),
                       child: new Center(
                         child: new Text(
-                          '"Aixó son 2 linies de codi"',
+                          '"That`s only two lines of code"',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'Architects',
@@ -286,126 +299,6 @@ class _ProfilePageState extends State<ProfilePage> {
       )
     );
   }
-                      
-Widget buildImages() {
-  return Padding(
-    padding: EdgeInsets.only(top: 15.0, left: 15.0, right: 15.0),
-    child: Container(
-        height: 200.0,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            image: DecorationImage(
-                image: AssetImage('assets/beach1.jpg'), fit: BoxFit.cover))),
-  );
-}
-
-Widget _ackAlert() {
-      return AlertDialog(
-        title: Text('Enter new data'),
-        content: new Stack(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Text("Ese"),
-                Container(
-                  width: 2,
-                )
-              ],
-            )
-          ],
-        ),
-        actions: <Widget>[
-          FlatButton(
-            child: Text('Ok'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-}
-                      
-Widget buildInfoDetail() {
-  return Padding(
-    padding:
-    EdgeInsets.only(left: 25.0, right: 25.0, top: 10.0, bottom: 15.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'Maldives - 12 Days',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat',
-                  fontSize: 15.0),
-            ),
-            SizedBox(height: 7.0),
-            Row(
-              children: <Widget>[
-                Text(
-                  'Teresa Soto',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Montserrat',
-                      fontSize: 11.0),
-                ),
-                SizedBox(width: 4.0),
-                Icon(
-                  Icons.timer,
-                  size: 4.0,
-                  color: Colors.black,
-                ),
-                SizedBox(width: 4.0),
-                Text(
-                  '3 Videos',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Montserrat',
-                      fontSize: 11.0),
-                )
-              ],
-            )
-          ],
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(width: 7.0),
-            InkWell(
-              onTap: () {},
-              child: Container(
-                height: 20.0,
-                width: 20.0,
-                child: Image.asset('assets/navarrow.png'),
-              ),
-            ),
-            SizedBox(width: 7.0),
-            InkWell(
-              onTap: () {},
-              child: Container(
-                height: 20.0,
-                width: 20.0,
-                child: Image.asset('assets/chatbubble.png'),
-              ),
-            ),
-            SizedBox(width: 7.0),
-            InkWell(
-              onTap: () {},
-              child: Container(
-                height: 22.0,
-                width: 22.0,
-                child: Image.asset('assets/fav.png'),
-              ),
-            )
-          ],
-        )
-      ],
-    ),
-  );
-}
 
 
 }
