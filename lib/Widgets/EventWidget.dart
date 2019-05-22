@@ -33,7 +33,7 @@ class _EventState extends State<EventWidget>{
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Architects',
+                    fontFamily: 'Roboto',
                   ),
               ), 
             ),
@@ -60,14 +60,15 @@ class _EventState extends State<EventWidget>{
                           children: <Widget>[
                             Text('Sport: ',
                               style: TextStyle(
-                                fontFamily: 'Architects',
+                                fontFamily: 'Roboto',
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold
                               ),
                             ),
                             Text(widget.typeSport,
                               style: TextStyle(
-                                fontFamily: 'Architects',
+                                fontFamily: 'Roboto',
+                                fontSize: 18
                               ),
                             ),
                           ],
@@ -85,14 +86,15 @@ class _EventState extends State<EventWidget>{
                           children: <Widget>[
                             Text('Max Players: ',
                               style: TextStyle(
-                                fontFamily: 'Architects',
+                                fontFamily: 'Roboto',
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold
                               ),
                             ),
                             Text(widget.players.toString(),
                               style: TextStyle(
-                                fontFamily: 'Architects',
+                                fontFamily: 'Roboto',
+                                                                fontSize: 18
                               ),
                             ),
                           ],
@@ -108,14 +110,15 @@ class _EventState extends State<EventWidget>{
                           children: <Widget>[
                             Text('Event date: ',
                               style: TextStyle(
-                                fontFamily: 'Architects',
+                                fontFamily: 'Roboto',
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold
                               ),
                             ),
                             Text(widget.eventDate,
                               style: TextStyle(
-                                fontFamily: 'Architects',
+                                fontFamily: 'Roboto',
+                                                                fontSize: 18
                               ),
                             ),
                           ],
@@ -160,7 +163,7 @@ class _EventState extends State<EventWidget>{
                       style: new TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'Architects',
+                          fontFamily: 'Roboto',
                           fontSize: 16.0),
                     ),
                   ),

@@ -1,8 +1,7 @@
-import 'package:firebase_database/firebase_database.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sportshareapp/BackgroundGradient.dart';
 import 'package:sportshareapp/Widgets/EventWidget.dart';
 
@@ -66,13 +65,13 @@ class _EventListPage extends State<EventListPage>{
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
-                          fontFamily: 'Architects',),
+                          fontFamily: 'Roboto',),
                       ),
                       Text("Josep",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,
-                          fontFamily: 'Architects',
+                          fontFamily: 'Roboto',
                         ),
                       ),
                         ],
@@ -81,7 +80,6 @@ class _EventListPage extends State<EventListPage>{
                           ],
                         ),
                       ),
-
                       Padding(
                         padding: EdgeInsets.only(left: 20, top: 20),
                         child:Container(
@@ -96,7 +94,6 @@ class _EventListPage extends State<EventListPage>{
                         ),
                       ),
                       )
-
                     ],
                   ),
                 ),
@@ -110,12 +107,12 @@ class _EventListPage extends State<EventListPage>{
               if(snapshot.connectionState == ConnectionState.waiting)
               {
                 return Center(
-                  child: Text("Cargando eventos..",
+                  child: Text("Loading events..",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Architects'
+                    fontFamily: 'Roboto'
                   ),),
                 );
               }else{

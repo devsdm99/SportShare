@@ -9,7 +9,6 @@ class _UploadPicturePageState extends State<UploadPicturePage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: new Form(
         child: new Container(

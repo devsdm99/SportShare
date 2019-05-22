@@ -82,7 +82,7 @@ class _NewEventState extends State<NewEventPage> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                   color: Colors.white,
-                  fontFamily: 'Architects'
+                  fontFamily: 'Roboto'
                   ),
                 ),
               ],
@@ -149,7 +149,7 @@ class _NewEventState extends State<NewEventPage> {
                                     labelText: 'Event Name',
                                     labelStyle: new TextStyle(
                                       color: Colors.white,
-                                      fontFamily: 'Architects'
+                                      fontFamily: 'Roboto'
                                       )
                                   ),
                                 ),
@@ -179,7 +179,7 @@ class _NewEventState extends State<NewEventPage> {
                                       hint: Text('Please choose a sport.',
                                       style: new TextStyle(
                                       color: Colors.white,
-                                      fontFamily: 'Architects'),
+                                      fontFamily: 'Roboto'),
                                     ),
                                     value: _selectedSport,
                                     onChanged: (newValue){
@@ -191,7 +191,7 @@ class _NewEventState extends State<NewEventPage> {
                                       return new DropdownMenuItem<String>(
                                         child: new Text(sport,
                                         style: new TextStyle(
-                                        fontFamily: 'Architects',
+                                        fontFamily: 'Roboto',
                                         color: Colors.white),
                                       ),
                                     value: sport
@@ -230,7 +230,7 @@ class _NewEventState extends State<NewEventPage> {
                               style: TextStyle(
                               fontSize: 15,
                               color: Colors.white,
-                              fontFamily: 'Architects'
+                              fontFamily: 'Roboto'
                               ),)
                             ],
                           ) ,
@@ -284,7 +284,7 @@ class _NewEventState extends State<NewEventPage> {
                               style: new TextStyle(
                               color: Colors.white,
                               fontSize: 25,
-                              fontFamily: 'Architects',
+                              fontFamily: 'Roboto',
                               fontWeight: FontWeight.bold
                               ),
                             ),
@@ -345,7 +345,7 @@ class _NewEventState extends State<NewEventPage> {
                           style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
-                          fontFamily: 'Architects'
+                          fontFamily: 'Roboto'
                           ),)
                         ],
                       )
@@ -364,7 +364,7 @@ class _NewEventState extends State<NewEventPage> {
                       Text(_selectedDateValue = "${selectedDate.day}/${selectedDate.month} / ${selectedDate.year}",
                       style: new TextStyle(
                         color: Colors.white,
-                        fontFamily: 'Architects',
+                        fontFamily: 'Roboto',
                         fontSize: 20,
                         ),
                       ),
@@ -399,7 +399,7 @@ class _NewEventState extends State<NewEventPage> {
                               style: new TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'Architects',
+                                  fontFamily: 'Roboto',
                                   fontSize: 16.0),
                             ),
                           ),
@@ -430,7 +430,7 @@ class _NewEventState extends State<NewEventPage> {
                                   child: new Text('CREATE +',
                                   style: TextStyle(
                                     fontSize: 20,
-                                    fontFamily: 'Architects',
+                                    fontFamily: 'Roboto',
                                     color: Colors.white
                                   ),),
                                 ), 

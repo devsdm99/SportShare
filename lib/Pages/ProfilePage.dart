@@ -37,7 +37,7 @@ class editWidget extends StatelessWidget
           child: new Text('EDIT ',
           style: TextStyle(
             fontSize: 20,
-            fontFamily: 'Architects',
+            fontFamily: 'Roboto',
             color: Colors.white
           ),),
         ), 
@@ -89,7 +89,26 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> signOut() async{
-      await widget.auth.signOut();
+          showDialog(
+      context: context,
+      builder: (BuildContext context){
+        return AlertDialog(
+          title: new Text("ALERT!"),
+          content: new Text("Logout is still not released.\nComing soon"),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("Close",
+              style: TextStyle(
+                color: Colors.black
+              ),),
+              onPressed: (){
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      }
+    );
   }
 
   final ref = FirebaseStorage.instance.ref().child('testimage');
@@ -111,7 +130,45 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: 100,
                 child: new Column(
                   children: <Widget>[
-                    editWidget()
+                    GestureDetector(
+                      onTap: (){
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context){
+                            return AlertDialog(
+                              title: new Text("ALERT!"),
+                              content: new Text("Edit mode is still not released.\nComing soon"),
+                              actions: <Widget>[
+                                new FlatButton(
+                                  child: new Text("Close",
+                                  style: TextStyle(
+                                    color: Colors.black
+                                  ),),
+                                  onPressed: (){
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          }
+                        );
+                      },
+                      child:new Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)
+                      ),
+                      color: Colors.white10,
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: new Text('EDIT ',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Roboto',
+                          color: Colors.white
+                        ),),
+                      ), 
+                    ),
+                    )
                   ],
                 ) 
               ),
@@ -135,7 +192,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: new Text('Logout ',
                         style: TextStyle(
                           fontSize: 20,
-                          fontFamily: 'Architects',
+                          fontFamily: 'Roboto',
                           color: Colors.white
                         ),),
                       ), 
@@ -153,8 +210,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: new Column(
                   children: <Widget>[
                     BackgroundGradient(),
-                    GestureDetector(
-                      child: Container(
+                    Container(
                         height: 125.0,
                         width: 125.0,
                         decoration: BoxDecoration(                    
@@ -165,15 +221,14 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                       ),
-                    )
                   ],
                 ), 
               ),
               SizedBox(height: 25.0),
               Text(
-                'El Guti',
+                'Guti',
                 style: TextStyle(
-                    fontFamily: 'Architects',
+                    fontFamily: 'Roboto',
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
@@ -238,7 +293,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          'FIRENDS',
+                          'FRIENDS',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               color: Colors.white),
@@ -254,9 +309,112 @@ class _ProfilePageState extends State<ProfilePage> {
                   Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
+                      'Teammates: ',
+                      style: TextStyle(
+                        fontFamily: 'Roboto', 
+                        color: Colors.white,
+                         fontSize: 23,
+                         fontWeight: FontWeight.bold
+                        ),
+                    ), 
+                  )
+                ],
+              ),
+              SizedBox(height: 4.0),
+              Container(
+                color: Colors.redAccent,
+                child:Padding(
+                padding: EdgeInsets.all(20),
+                child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(0),
+                    child: new Column(
+                    children: <Widget>[
+                      Container(
+                        height: 75.0,
+                        width: 75.0,
+                        decoration: BoxDecoration(                    
+                        borderRadius: BorderRadius.circular(62.5),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage('assets/carreras.jpg'),       
+                          ),
+                        ),
+                      ),
+                      new Padding(
+                        padding: EdgeInsets.all(3),
+                        child: Text("Sergi", style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20
+                        ),),
+                      )
+                    ],
+                  ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(0),
+                    child: new Column(
+                    children: <Widget>[
+                      Container(
+                        height: 75.0,
+                        width: 75.0,
+                        decoration: BoxDecoration(                    
+                        borderRadius: BorderRadius.circular(62.5),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage('assets/vanesa.jpg'),       
+                          ),
+                        ),
+                      ),
+                      new Padding(
+                        padding: EdgeInsets.only(top: 3),
+                        child: Text("Vanesa", style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20
+                        ),),
+                      )
+                    ],
+                  ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(0),
+                    child: new Column(
+                    children: <Widget>[
+                      Container(
+                        height: 75.0,
+                        width: 75.0,
+                        decoration: BoxDecoration(                    
+                        borderRadius: BorderRadius.circular(62.5),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage('assets/isa.jpg'),       
+                          ),
+                        ),
+                      ),
+                      new Padding(
+                        padding: EdgeInsets.only(top: 3),
+                        child: Text("Isa", style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20
+                        ),),
+                      )
+                    ],
+                  ),
+                  ),
+                ],
+              ),
+              ),
+              ),
+              new Row(
+                children: <Widget>[   
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
                       'Description: ',
                       style: TextStyle(
-                        fontFamily: 'Architects', 
+                        fontFamily: 'Roboto', 
                         color: Colors.white,
                          fontSize: 23,
                          fontWeight: FontWeight.bold
@@ -283,7 +441,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           '"That`s only two lines of code"',
                         style: TextStyle(
                           color: Colors.white,
-                          fontFamily: 'Architects',
+                          fontFamily: 'Roboto',
                           fontSize: 20
                         ),
                         ),
@@ -299,7 +457,5 @@ class _ProfilePageState extends State<ProfilePage> {
       )
     );
   }
-
-
 }
 

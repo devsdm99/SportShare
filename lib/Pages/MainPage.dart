@@ -46,14 +46,14 @@ class _MainPage extends State<MainPage>
                                   Text("Welcome to SportShare",
                                   style: TextStyle(
                                   color: Colors.white,
-                                  fontFamily: 'Architects',
+                                  fontFamily: 'Roboto',
                                   fontSize: 20),
                                   ),
                                   Text("Josep",
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 15,
-                                      fontFamily: 'Architects',
+                                      fontFamily: 'Roboto',
                                   ),
                                 ),
                               ],
@@ -89,7 +89,7 @@ class _MainPage extends State<MainPage>
                       color:  Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Architects',
+                      fontFamily: 'Roboto',
                     ),)
                   ],
                 ),
@@ -114,7 +114,7 @@ class _MainPage extends State<MainPage>
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'Architects',
+                                  fontFamily: 'Roboto',
                                 ),)
                               ],
                             ),
@@ -133,11 +133,11 @@ class _MainPage extends State<MainPage>
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text("New UI", style: TextStyle(
+                                Text("New UI \\ UX", style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'Architects',
+                                  fontFamily: 'Roboto',
                                 ),)
                               ],
                             ),
@@ -158,7 +158,7 @@ class _MainPage extends State<MainPage>
                       color:  Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Architects',
+                      fontFamily: 'Roboto',
                     ),)
                   ],
                 ),
@@ -176,25 +176,25 @@ class _MainPage extends State<MainPage>
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Architects',
+                        fontFamily: 'Roboto',
                       ),),
                       Text("2. Add friends", style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Architects',
+                        fontFamily: 'Roboto',
                       ),),
                       Text("3. Group creations", style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Architects',
+                        fontFamily: 'Roboto',
                       ),),
                       Text("4. Login via Google", style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Architects',
+                        fontFamily: 'Roboto',
                       ),)
                     ],
                   ),

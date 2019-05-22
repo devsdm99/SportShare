@@ -59,7 +59,7 @@ class _LoginPage extends State<LoginPage> {
                                   labelStyle: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
-                                    fontFamily: 'Architects'),
+                                    fontFamily: 'Roboto'),
                                   focusedBorder: UnderlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.white))),
@@ -78,7 +78,7 @@ class _LoginPage extends State<LoginPage> {
                                       TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
-                                        fontFamily: 'Architects'),
+                                        fontFamily: 'Roboto'),
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide:
                                           BorderSide(color: Colors.white),   

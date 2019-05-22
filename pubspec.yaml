@@ -48,9 +48,13 @@ flutter:
     - assets/navarrow.png
     - assets/chatbubble.png
     - assets/fav.png
+    - assets/vanesa.jpg
+    - assets/carreras.jpg
+    - assets/isa.jpg
+
   fonts:
-    - family: Architects
+    - family: Roboto
       fonts:
-        - asset: fonts/Architects-Daughter.ttf
+        - asset: fonts/Roboto-Regular.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
